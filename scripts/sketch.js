@@ -51,11 +51,11 @@ var sounds;             // dict of all sounds
 var boomSound;          // explosion sound effect
 
 // TODO add more functionality to god mode
-var godMode = false;    // make player immortal for test purposes
+var godMode = true;    // make player immortal for test purposes
 var healthBar = true;   // display enemy health bar
-var muteSounds = false; // whether to mute sounds
+var muteSounds = true; // whether to mute sounds
 var paused;             // whether to update or not
-var randomWaves = true; // whether to do random or custom waves
+var randomWaves = false; // whether to do random or custom waves
 var scd;                // number of ticks until next spawn cycle
 var showEffects = true; // whether or not to display particle effects
 var showFPS = false;    // whether or not to display FPS
@@ -93,8 +93,10 @@ function addGroup(group) {
 // Prepare a wave
 function addWave(pattern) {
     spawnCool = pattern.shift();
+    console.log('spawnCool', spawnCool);
     for (var i = 0; i < pattern.length; i++) {
         addGroup(pattern[i]);
+        console.log('pattern',pattern[i]);
     }
 }
 
@@ -149,7 +151,49 @@ function clearInfo() {
 }
 
 // TODO implement
-function customWave() {}
+function customWave() {
+    let waves = [];
+    let tempWave = [];
+
+    tempWave.push(30 - (wave * 2))
+    
+    if(wave == 0){
+        tempWave.push(['fraco', 10]);
+    }
+    else if(wave == 1){
+        tempWave.push(['fraco', 25] );
+    }
+    else if(wave == 2){
+        tempWave.push(['saudavel', 18],['fraco',18]);
+    }
+    else if(wave == 3){
+        tempWave.push(['saudavel', 25],['fraco',35]);
+    }
+    else if(wave == 4){
+        tempWave.push(['forte', 4],['saudavel', 18],['fraco',28]);
+    }
+    else if(wave == 5){
+        tempWave.push(['forte', 10], ['saudavel', 25], ['forte', 9], ['fraco',25]);
+    }
+    else if(wave == 6){
+        tempWave.push(['forte', 20]);
+    }
+    else if(wave == 7){
+        tempWave.push(['forte', 28], ['saudavel', 28], ['fraco', 36]);
+    }
+    else if(wave == 8){
+        tempWave.push(['forte', 10],['saudavel', 10],['forte', 20],['saudavel', 20],['forte', 30],['saudavel', 30]);
+    }
+    else if(wave == 9){
+        tempWave.push(['garen', 1],['forte', 30]);
+    }
+    
+    console.log('tempWave');
+    console.log(tempWave);
+    waves.push(tempWave);
+
+    return waves[0];
+}
 
 // Check if all conditions for showing a range are true
 function doRange() {
@@ -279,7 +323,7 @@ function isWave(min, max) {
 function loadMap() {
     var name = document.getElementById('map').value;
 
-    health = 40;
+    health = 10;
     cash = 55;
     
     if (name === 'custom' && custom) {
@@ -491,6 +535,7 @@ function randomWave() {
 
     if (isWave(0, 3)) {
         waves.push([40, ['weak', 50]]);
+        waves.push([20, ['weak', 5], ['strong', 5]]);
     }
     if (isWave(2, 4)) {
         waves.push([20, ['weak', 25]]);
@@ -585,7 +630,10 @@ function randomWave() {
         waves.push([0, ['taunt', 'faster', 200]]);
     }
 
-    return random(waves);
+    let abc = random(waves);
+    console.log('abc');
+    console.log(abc[0], abc[1]);
+    return abc;
 }
 
 // Recalculate pathfinding maps
@@ -775,7 +823,7 @@ function walkable(col, row) {
 // Main p5 functions
 
 function preload() {
-    loadSounds();
+    //loadSounds();
 }
 
 function setup() {
