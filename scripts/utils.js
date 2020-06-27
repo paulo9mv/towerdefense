@@ -66,9 +66,9 @@ function copyToClipboard(str) {
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
-        console.log('Copying text was ' + msg);
+
     } catch (err) {
-        console.log('Unable to copy to clipboard');
+   
         prompt('Map string:', str);
     }
 

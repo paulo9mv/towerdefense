@@ -96,7 +96,6 @@ function addWave(pattern) {
 
     for (var i = 0; i < pattern.length; i++) {
         addGroup(pattern[i]);
-        console.log('pattern',pattern[i]);
     }
 }
 
@@ -640,8 +639,6 @@ function randomWave() {
     }
 
     let abc = random(waves);
-    console.log('abc');
-    console.log(abc[0], abc[1]);
     return abc;
 }
 
@@ -835,6 +832,7 @@ function walkable(col, row) {
 function preload() {
     //loadSounds();
 }
+
 
 function setup() {
     var div = document.getElementById('sketch-holder');
@@ -1050,7 +1048,12 @@ function draw() {
     newTowers = [];
 
     // If player is dead, reset game
-    if (health <= 0) resetGame();
+    if (health <= 0){
+    
+
+        salvarDados();
+        resetGame();
+    }
     if (wave == 10){
         alert('Fim de jogo!');
         resetGame();
@@ -1095,6 +1098,7 @@ function keyPressed() {
             break;
         case 32:
             // Space
+            console.log("PAUSOU");
             pause();
             break;
         case 49:
@@ -1202,7 +1206,7 @@ function keyPressed() {
 }
 
 function mousePressed() {
-    print("Pressionou");
+   
     if (!mouseInMap()) return;
     var p = gridPos(mouseX, mouseY);
     print(p);
