@@ -30,23 +30,23 @@ enemy.fraco = {
     name : 'fraco',
     cash : 1,
     health: 40,
-    speed: 2.1,
+    speed: 2,
 }
 
 enemy.saudavel = {
     color: [0,0,255],
     name : 'saudavel',
     cash: 1,
-    health : 85,
-    speed:2
+    health : 80,
+    speed:1.7
 }
 
 enemy.forte = {
     color : [0,255,0],
     name : 'forte',
     cash : 2,
-    health : 250,
-    speed: 1.5
+    health : 200,
+    speed: 1.8
 }
 
 enemy.garen = {
@@ -54,7 +54,7 @@ enemy.garen = {
     name : 'garen',
     cash : 5,
     health : 500,
-    speed : 0.5
+    speed : 1
 }
 
 enemy.weakfast = {
@@ -76,7 +76,7 @@ enemy.medium = {
     // Stats
     cash: 1,
     speed: 2,
-    health: 55
+    health: 60
 };
 
 enemy.strong = {

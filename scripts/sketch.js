@@ -51,7 +51,7 @@ var sounds;             // dict of all sounds
 var boomSound;          // explosion sound effect
 
 // TODO add more functionality to god mode
-var godMode = true;    // make player immortal for test purposes
+var godMode = false;    // make player immortal for test purposes
 var healthBar = true;   // display enemy health bar
 var muteSounds = true; // whether to mute sounds
 var paused;             // whether to update or not
@@ -64,7 +64,7 @@ var stopFiring = false; // whether or not to pause towers firing
 var toCooldown;         // flag to reset spawning cooldown
 var toPathfind;         // flag to update enemy pathfinding
 var toPlace;            // flag to place a tower
-var toWait;             // flag to wait before next wave
+var toWait = false;             // flag to wait before next wave
 var wcd;                // number of ticks until next wave
 
 var avgFPS = 0;         // current average of all FPS values
@@ -74,7 +74,7 @@ var minDist = 15;       // minimum distance between spawnpoint and exit
 var resistance = 0.5;   // percentage of damage blocked by resistance
 var sellConst = 0.8;    // ratio of tower cost to sell price
 var wallCover = 0.1;    // percentage of map covered by walls
-var waveCool = 120;     // number of ticks between waves
+var waveCool = 60;     // number of ticks between waves
 var weakness = 0.5;     // damage increase from weakness
 
 
@@ -93,7 +93,7 @@ function addGroup(group) {
 // Prepare a wave
 function addWave(pattern) {
     spawnCool = pattern.shift();
-    console.log('spawnCool', spawnCool);
+
     for (var i = 0; i < pattern.length; i++) {
         addGroup(pattern[i]);
         console.log('pattern',pattern[i]);
@@ -111,7 +111,9 @@ function buy(t) {
         if (grid[t.gridPos.x][t.gridPos.y] === 0) toPathfind = true;
         updateInfo(t);
         newTowers.push(t);
+        return true;
     }
+    return false;
 }
 
 // Calculate and display current and average FPS
@@ -155,41 +157,48 @@ function customWave() {
     let waves = [];
     let tempWave = [];
 
-    tempWave.push(30 - (wave * 2))
+    if(30 - (wave * 3) <= 10){
+        tempWave.push(10)
+    }
+    else{
+        tempWave.push(30 - (wave * 3))
+    }
+    
+    
+    
     
     if(wave == 0){
-        tempWave.push(['fraco', 10]);
+        tempWave.push(['fraco', 10]); // 10
     }
     else if(wave == 1){
-        tempWave.push(['fraco', 25] );
+        tempWave.push(['fraco', 20] ); // 20
     }
     else if(wave == 2){
-        tempWave.push(['saudavel', 18],['fraco',18]);
+        tempWave.push(['medium', 15],['fraco',15]); //30
     }
     else if(wave == 3){
-        tempWave.push(['saudavel', 25],['fraco',35]);
+        tempWave.push(['medium', 10],['saudavel', 10],['fraco',25]); //45
     }
     else if(wave == 4){
-        tempWave.push(['forte', 4],['saudavel', 18],['fraco',28]);
+        tempWave.push(['forte', 4],['saudavel', 18],['fraco',28]); //50
     }
     else if(wave == 5){
-        tempWave.push(['forte', 10], ['saudavel', 25], ['forte', 9], ['fraco',25]);
+        tempWave.push(['forte', 10], ['saudavel', 20], ['forte', 10], ['fraco',20]); //60
     }
     else if(wave == 6){
-        tempWave.push(['forte', 20]);
+        tempWave.push(['forte', 15], ['saudavel', 5], ['forte', 5]); //25
     }
     else if(wave == 7){
-        tempWave.push(['forte', 28], ['saudavel', 28], ['fraco', 36]);
+        tempWave.push(['forte', 20], ['saudavel', 25], ['fraco', 30]); //75
     }
     else if(wave == 8){
-        tempWave.push(['forte', 10],['saudavel', 10],['forte', 20],['saudavel', 20],['forte', 30],['saudavel', 30]);
+        tempWave.push(['forte', 5],['saudavel', 5],['forte', 10],['saudavel', 10],['forte', 15],['saudavel', 15]); //60
     }
     else if(wave == 9){
-        tempWave.push(['garen', 1],['forte', 30]);
+        tempWave.push(['garen', 3],['forte', 30]); //31
     }
     
-    console.log('tempWave');
-    console.log(tempWave);
+
     waves.push(tempWave);
 
     return waves[0];
@@ -323,8 +332,8 @@ function isWave(min, max) {
 function loadMap() {
     var name = document.getElementById('map').value;
 
-    health = 10;
-    cash = 55;
+    health = 15;
+    cash = 65;
     
     if (name === 'custom' && custom) {
         // Grids
@@ -711,7 +720,7 @@ function resetGame() {
     newProjectiles = [];
     newTowers = [];
     // Reset all stats
-    health = 40;
+    health = 15;
     maxHealth = health;
     wave = 0;
     // Reset all flags
@@ -720,6 +729,7 @@ function resetGame() {
     toCooldown = false;
     toPathfind = false;
     toPlace = false;
+    pararDeComprar = false;
     // Start game
     nextWave();
 }
@@ -1041,6 +1051,10 @@ function draw() {
 
     // If player is dead, reset game
     if (health <= 0) resetGame();
+    if (wave == 10){
+        alert('Fim de jogo!');
+        resetGame();
+    }
 
     // Start next wave
     if (toWait && wcd === 0 || skipToNext && newEnemies.length === 0) {
@@ -1053,6 +1067,7 @@ function draw() {
     if (noMoreEnemies() && !toWait) {
         wcd = waveCool;
         toWait = true;
+        pararDeComprar = false;
     }
 
     // Reset spawn cooldown
@@ -1187,8 +1202,10 @@ function keyPressed() {
 }
 
 function mousePressed() {
+    print("Pressionou");
     if (!mouseInMap()) return;
     var p = gridPos(mouseX, mouseY);
+    print(p);
     var t = getTower(p.x, p.y);
     
     if (t) {
@@ -1197,6 +1214,7 @@ function mousePressed() {
         toPlace = false;
         updateInfo(selected);
     } else if (canPlace(p.x, p.y)) {
+        
         buy(createTower(p.x, p.y, tower[towerType]));
     }
 }

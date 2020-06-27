@@ -19,9 +19,10 @@ tower.gun = {
     name: 'gun',
     title: 'Gun Tower',
     // Stats
-    cooldownMax: 18,
-    cooldownMin: 8,
-    cost: 30,
+    cooldownMax: 9,
+    cooldownMin: 4,
+    damageMin: 2,
+    cost: 25,
     range: 3,
     // Upgrades
     upgrades: [
@@ -54,7 +55,8 @@ tower.laser = {
     // Stats
     cooldownMax: 1,
     cost: 75,
-    damageMax: 3,
+    damageMax: 4,
+    damageMin: 2,
     range: 2,
     type: 'energy',
     // Upgrades
