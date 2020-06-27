@@ -47,7 +47,7 @@ function salvarDados(){
     console.log("Salvando dados...");
     let intervalo;
 
-    individuo++;
+    
     tempoB = performance.now();
 
     intervalo = (tempoB - tempoA)/1000;
@@ -61,7 +61,7 @@ function salvarDados(){
         ultimaWaveAtingida: wave,
         tempoSegundos: intervalo
     }
-
+    individuo++;
     novosIndividuos.push(packet);    
 
     if(individuo == individuosPorGeracao){
@@ -73,14 +73,53 @@ function salvarDados(){
     }
 
     console.log("Individuo", individuo,"/",individuosPorGeracao,". Geração", geracao);
-    console.log(packet);
     adicionadas = [];
 }
 
+var todosIndividuosDeTodasGeracoes = [];
+
 function geraNovaGeracao(){
     let melhoresIndividuos = sortObj(novosIndividuos, 'ultimaWaveAtingida').slice(0, quantidadeMelhoresIndivuduos);
-        console.log(melhoresIndividuos);
-        console.log(novosIndividuos);
+    todosIndividuosDeTodasGeracoes.push(novosIndividuos);
+    novosIndividuos = [];
+
+
+        for (let i = 0; i < melhoresIndividuos.length; i++)
+        for (let j = 0; j < melhoresIndividuos.length; j++) {
+            if (i != j) {
+                
+                //Necessário para manter o array inalterado
+                json1 = JSON.stringify(melhoresIndividuos[i]);
+                json2 = JSON.stringify(melhoresIndividuos[j]);
+
+                filho = mutateInto(melhoresIndividuos[i].torresPosicionadas, melhoresIndividuos[j].torresPosicionadas, 0.15);	
+                novosIndividuos.push(filho);				            
+                
+                melhoresIndividuos[i] = JSON.parse(json1);
+                melhoresIndividuos[j] = JSON.parse(json2);
+            }
+        }
+        
+}
+function randomIntFromInterval(min, max) { // min and max included 
+	return Math.floor(Math.random() * (max - min + 1) + min);
+}
+/**
+ * Função que pega cromossomos do A e coloca em B
+ */
+function mutateInto(a, b, fator, fatorMutacao = 0.1) {
+	
+	const bias = Math.floor(b.length * fator);
+	const inicio = Math.floor(Math.random() * (a.length - bias - 1));
+
+	const cromossomos = a.slice(inicio, inicio + bias);	
+	cromossomos.forEach(function (element) {		
+		element.mutacao = Math.random() < fatorMutacao;
+	});
+
+	const inicio2 = randomIntFromInterval(0, b.length - bias);	
+	b.splice(inicio2, bias);	
+	return sortObj(b.concat(cromossomos), 'wave', true);
 }
 
 var adicionadas = [];
