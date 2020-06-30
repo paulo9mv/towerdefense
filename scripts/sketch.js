@@ -456,9 +456,10 @@ function loadSounds() {
 }
 
 // Increment wave counter and prepare wave
-function nextWave() {
+function nextWave() {    
     addWave(randomWaves ? randomWave() : customWave());
-    wave++;
+    wave++; 
+    executando = false;   
 }
 
 // Check if no more enemies
@@ -801,6 +802,8 @@ function updatePause() {
 
 // Update game status display with wave, health, and cash
 function updateStatus() {
+    document.getElementById('individuo').innerHTML = 'Individuo ' + individuo;
+    document.getElementById('geracao').innerHTML = 'Geração ' + geracao;
     document.getElementById('wave').innerHTML = 'Wave ' + wave;
     document.getElementById('health').innerHTML = 'Health: ' +
     health + '/' + maxHealth;
