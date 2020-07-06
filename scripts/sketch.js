@@ -886,12 +886,13 @@ function draw() {
     rect(exit.x * ts, exit.y * ts, ts, ts);
 
     // Draw temporary spawnpoints
+    /*
     for (var i = 0; i < tempSpawns.length; i++) {
         stroke(255);
         fill(155, 32, 141);
         var s = tempSpawns[i][0];
         rect(s.x * ts, s.y * ts, ts, ts);
-    }
+    }*/
 
     // Spawn enemies
     if (canSpawn() && !paused) {
@@ -940,11 +941,11 @@ function draw() {
     }
 
     // Draw health bars
-    if (healthBar) {
-        for (var i = 0; i < enemies.length; i++) {
-            enemies[i].drawHealth();
-        }
-    }
+    //if (healthBar) {
+    //    for (var i = 0; i < enemies.length; i++) {
+    //        enemies[i].drawHealth();
+    //    }
+    //}
 
     // Update and draw towers
     for (let i = towers.length - 1; i >= 0; i--) {
@@ -966,6 +967,7 @@ function draw() {
     }
 
     // Update and draw particle systems
+    
     for (let i = systems.length - 1; i >= 0; i--) {
         let ps = systems[i];
         ps.run();
@@ -993,6 +995,7 @@ function draw() {
     }
 
     // Draw range of tower being placed
+    /*
     if (doRange()) {
         var p = gridPos(mouseX, mouseY);
         var c = center(p.x, p.y);
@@ -1016,7 +1019,7 @@ function draw() {
 
             pop();
         }
-    }
+    }*/
 
     // Update FPS meter
     if (showFPS) calcFPS();
