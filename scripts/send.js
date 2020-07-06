@@ -3,7 +3,22 @@
 var lock = false;
 var debugao = true;
 var tempoA, tempoB;
+var adicionadas = [];
+var pararDeComprar = false;
 
+var individuo = 0;
+var geracao = 0;
+const individuosPorGeracao = 6;
+const quantidadeMelhoresIndivuduos = 3;
+
+var firstExecution = true;
+var posterior = [];
+var waveAnterior = -1;
+let executando = false;
+var todosIndividuosDeTodasGeracoes = [];
+var genesCriados = [];
+
+var novosIndividuos = [];
 function randomGun() {
     let gunsRandom = [];
 
@@ -29,7 +44,6 @@ function randomGun() {
 
 }
 
-var novosIndividuos = [];
 function sortObj(list, key, dec = false) {
     function compare(b, a) {
         a = a[key];
@@ -81,8 +95,7 @@ function salvarDados() {
     adicionadas = [];
 }
 
-var todosIndividuosDeTodasGeracoes = [];
-var genesCriados = [];
+
 
 function geraNovaGeracao() {
     console.log('Selecionando os melhores');
@@ -144,41 +157,71 @@ function mutateInto(a, b, fator, fatorMutacao = 0.1) {
     return sortObj(b.concat(cromossomos), 'wave', true);
 }
 
-var adicionadas = [];
-var pararDeComprar = false;
-
-var individuo = 0;
-var geracao = 0;
-const individuosPorGeracao = 6;
-const quantidadeMelhoresIndivuduos = 3;
-
-var firstExecution = true;
-var posterior = [];
-var waveAnterior = -1;
-let executando = false;
-
 if (debugao) {
 
     if (firstExecution) {
         firstExecution = false;
         tempoA = performance.now();
+        console.log("Primeira execuçao", wave);
     }
 
     setInterval(function () {
 
+        if(paused){
+            pause();
+        }
 
-        //Se não estiver pausado vamos executar
-        if ((paused || toWait) && !pararDeComprar) {
+        if(!lock){
+            lock = true;
 
-            //Garante que só um pegue a trava/lock
-            if (!lock) {
-                lock = true;
+            if(wave != waveAnterior){
+                waveAnterior = wave;
+    
+                let x, y;
+                let podePosicionar = false;
+                console.log("Fazendo operações.");
+                if(geracao == 0){
+                    
+                    
 
-                console.log("wave anterior", waveAnterior, "wave atual", wave);
-                if (geracao >= 1 && waveAnterior != wave) {
+                    //Seleciona a arma a ser posicionada, se for -1 não vai comprar.
+                    let gun = randomGun();
 
-                    waveAnterior = wave;
-                    console.log("Entrando na leitura dos novos indivíduos na wave", wave);
+                    while (gun != -1) {
+
+                        //Seleciona a arma
+                        setPlace(gun);
+
+                        x = getRandomIntInclusive(0, 24);
+                        y = getRandomIntInclusive(0, 23);
+
+                        do {
+
+                            //Sorteia um local para posicionar
+                            podePosicionar = canPlace(x, y);
+                            if (podePosicionar) {
+                                buy(createTower(x, y, tower[towerType]));
+                                let nome = tower[towerType].name;
+                                adicionadas.push({
+                                    wave,
+                                    "torre": tower[towerType].name,
+                                    x,
+                                    y,
+
+                                });
+                                console.log("Posicionando", nome, "em", x, y);
+                            }
+                            else {
+                                x = getRandomIntInclusive(0, 24);
+                                y = getRandomIntInclusive(0, 23);
+                            }
+                        } while (!podePosicionar)
+
+                        gun = randomGun();
+                    }
+                }
+                else{
+
                     let genotipoDaRodada = genesCriados[individuo];
                     let gunsDaRodada = genotipoDaRodada.filter(item => item.wave == wave);
                     gunsDaRodada = gunsDaRodada.concat(posterior);
@@ -236,9 +279,9 @@ if (debugao) {
                             }
                         )
                     }
-               
-                    else{
-                        console.log("Estamos evoluindo. Wave atual:", wave,"Wave máxima:", waveMaximaAtingida);
+
+                    else {
+                        console.log("Estamos evoluindo. Wave atual:", wave, "Wave máxima:", waveMaximaAtingida);
                         let x, y;
                         let podePosicionar = false;
 
@@ -275,63 +318,19 @@ if (debugao) {
                                 }
                             } while (!podePosicionar)
 
-
                             gun = randomGun();
                         }
                     }
                     executando = true;
                 }
-                else if(geracao == 0){
-
-                    let x, y;
-                    let podePosicionar = false;
-
-                    //Seleciona a arma a ser posicionada, se for -1 não vai comprar.
-                    let gun = randomGun();
-
-                    while (gun != -1) {
-
-                        //Seleciona a arma
-                        setPlace(gun);
-
-                        x = getRandomIntInclusive(0, 24);
-                        y = getRandomIntInclusive(0, 23);
-
-                        do {
-
-                            //Sorteia um local para posicionar
-                            podePosicionar = canPlace(x, y);
-                            if (podePosicionar) {
-                                buy(createTower(x, y, tower[towerType]));
-                                let nome = tower[towerType].name;
-                                adicionadas.push({
-                                    wave,
-                                    "torre": tower[towerType].name,
-                                    x,
-                                    y,
-
-                                });
-                                console.log("Posicionando", nome, "em", x, y);
-                            }
-                            else {
-                                x = getRandomIntInclusive(0, 24);
-                                y = getRandomIntInclusive(0, 23);
-                            }
-                        } while (!podePosicionar)
-
-
-                        gun = randomGun();
-                    }
-                }
-                if (paused) {
-                    pause();
-                }
-
-                lock = false;
             }
+
+            lock = false;
         }
+        
+
     }
-        , 1000);
+        , 2000);
 
 }
 

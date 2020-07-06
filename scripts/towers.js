@@ -22,7 +22,7 @@ tower.gun = {
     cooldownMax: 9,
     cooldownMin: 4,
     damageMin: 2,
-    cost: 25,
+    cost: 20,
     range: 3,
     // Upgrades
     upgrades: [
@@ -54,7 +54,7 @@ tower.laser = {
     title: 'Laser Tower',
     // Stats
     cooldownMax: 1,
-    cost: 70,
+    cost: 65,
     damageMax: 4,
     damageMin: 2,
     range: 2,
@@ -111,7 +111,7 @@ tower.slow = {
     // Stats
     cooldownMax: 0,
     cooldownMin: 0,
-    cost: 95,
+    cost: 90,
     damageMax: 0,
     damageMin: 0,
     range: 1,
@@ -186,7 +186,7 @@ tower.sniper = {
     // Stats
     cooldownMax: 100,
     cooldownMin: 60,
-    cost: 145,
+    cost: 130,
     damageMax: 100,
     damageMin: 100,
     range: 9,
