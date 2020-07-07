@@ -162,10 +162,9 @@ function customWave() {
     else{
         tempWave.push(30 - (wave * 3))
     }
-    
-    
-    
-    
+            
+    if(dificuldadeJogo == 1){
+
     if(wave == 0){
         tempWave.push(['fraco', 10]); // 10
     }
@@ -194,9 +193,82 @@ function customWave() {
         tempWave.push(['forte', 5],['saudavel', 5],['forte', 10],['saudavel', 10],['forte', 15],['saudavel', 15]); //60
     }
     else if(wave == 9){
+        tempWave.push(['garen', 2],['forte', 25]); //31
+    }
+    else if(wave == 10){
         tempWave.push(['garen', 3],['forte', 30]); //31
     }
-    
+}
+else if(dificuldadeJogo == 2){
+    if(wave == 0){
+        tempWave.push(['fraco', 15]); // 10
+    }
+    else if(wave == 1){
+        tempWave.push(['fraco', 25] ); // 20
+    }
+    else if(wave == 2){
+        tempWave.push(['medium', 20],['fraco',20]); //30
+    }
+    else if(wave == 3){
+        tempWave.push(['medium', 15],['saudavel', 15],['fraco',30]); //45
+    }
+    else if(wave == 4){
+        tempWave.push(['forte',7],['saudavel', 25],['fraco',35]); //50
+    }
+    else if(wave == 5){
+        tempWave.push(['forte', 16], ['saudavel', 25], ['forte', 15], ['fraco',28]); //60
+    }
+    else if(wave == 6){
+        tempWave.push(['forte', 20], ['saudavel', 10], ['forte', 10]); //25
+    }
+    else if(wave == 7){
+        tempWave.push(['forte',25], ['saudavel', 32], ['fraco', 33]); //75
+    }
+    else if(wave == 8){
+        tempWave.push(['forte', 7],['saudavel', 10],['forte', 15],['saudavel', 15],['forte', 20],['saudavel', 20]); //60
+    }
+    else if(wave == 9){
+        tempWave.push(['garen', 5],['forte', 35]); //31
+    }
+    else if(wave == 10){
+        tempWave.push(['garen', 8],['forte', 42]); //31
+    }
+}
+else if(dificuldadeJogo == 3){
+    if(wave == 0){
+        tempWave.push(['fraco', 20]); // 10
+    }
+    else if(wave == 1){
+        tempWave.push(['fraco', 35] ); // 20
+    }
+    else if(wave == 2){
+        tempWave.push(['medium', 30],['fraco',30]); //30
+    }
+    else if(wave == 3){
+        tempWave.push(['medium', 25],['saudavel', 25],['fraco',40]); //45
+    }
+    else if(wave == 4){
+        tempWave.push(['forte',15],['saudavel', 35],['fraco',45]); //50
+    }
+    else if(wave == 5){
+        tempWave.push(['forte', 20], ['saudavel', 30], ['forte', 20], ['fraco',30]); //60
+    }
+    else if(wave == 6){
+        tempWave.push(['forte', 30], ['saudavel', 20], ['forte', 20]); //25
+    }
+    else if(wave == 7){
+        tempWave.push(['forte',35], ['saudavel', 39], ['fraco', 39]); //75
+    }
+    else if(wave == 8){
+        tempWave.push(['forte', 12],['saudavel', 15],['forte', 25],['saudavel', 25],['forte', 30],['saudavel', 29]); //60
+    }
+    else if(wave == 9){
+        tempWave.push(['garen', 10],['forte', 50]); //31
+    }
+    else if(wave == 10){
+        tempWave.push(['garen', 15],['forte', 55]); //31
+    }
+}
 
     waves.push(tempWave);
 
@@ -764,6 +836,24 @@ function setPlace(t) {
     toPlace = true;
     updateInfo(createTower(0, 0, tower[towerType]));
 }
+var dificuldadeJogo = 0;
+function setDificuldade(dificuldade){
+    if(dificuldade == 'facil'){
+        dificuldadeJogo = 1;
+    }
+    else if(dificuldade == 'medio'){
+        dificuldadeJogo = 2;
+    }
+    else{
+        dificuldadeJogo = 3;
+    }
+    
+document.getElementById("nivel").textContent = dificuldade;
+    document.getElementById("facil").disabled = "disabled";
+    document.getElementById("medio").disabled = "disabled";
+    document.getElementById("dificil").disabled = "disabled";
+
+}
 
 // Visualize range of tower
 function showRange(t, cx, cy) {
@@ -941,11 +1031,11 @@ function draw() {
     }
 
     // Draw health bars
-    //if (healthBar) {
-    //    for (var i = 0; i < enemies.length; i++) {
-    //        enemies[i].drawHealth();
-    //    }
-    //}
+    if (healthBar) {
+        for (var i = 0; i < enemies.length; i++) {
+            enemies[i].drawHealth();
+        }
+    }
 
     // Update and draw towers
     for (let i = towers.length - 1; i >= 0; i--) {
@@ -1060,7 +1150,7 @@ function draw() {
         salvarDados();
         resetGame();
     }
-    if (wave == 10){
+    if (wave == 11){
         alert('Fim de jogo!');
         resetGame();
     }

@@ -8,8 +8,8 @@ var pararDeComprar = false;
 
 var individuo = 0;
 var geracao = 0;
-const individuosPorGeracao = 6;
-const quantidadeMelhoresIndivuduos = 3;
+const individuosPorGeracao = 42;
+const quantidadeMelhoresIndivuduos = 7;
 
 var firstExecution = true;
 var posterior = [];
@@ -159,6 +159,8 @@ function mutateInto(a, b, fator, fatorMutacao = 0.1) {
 
 if (debugao) {
 
+    
+
     if (firstExecution) {
         firstExecution = false;
         tempoA = performance.now();
@@ -166,7 +168,9 @@ if (debugao) {
     }
 
     setInterval(function () {
-
+        if(dificuldadeJogo == 0){
+            return;
+        }
         if(paused){
             pause();
         }
@@ -179,11 +183,9 @@ if (debugao) {
     
                 let x, y;
                 let podePosicionar = false;
-                console.log("Fazendo operações.");
+                
                 if(geracao == 0){
-                    
-                    
-
+                                        
                     //Seleciona a arma a ser posicionada, se for -1 não vai comprar.
                     let gun = randomGun();
 
