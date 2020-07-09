@@ -49,6 +49,17 @@ enemy.forte = {
     speed: 1.8
 }
 
+enemy.medium = {
+    // Display
+    color: [189, 195, 0],
+    // Misc
+    name: 'medium',
+    // Stats
+    cash: 1,
+    speed: 2,
+    health: 60
+};
+
 enemy.garen = {
     color : [255,255,80],
     name : 'garen',
@@ -56,6 +67,93 @@ enemy.garen = {
     health : 500,
     speed : 1
 }
+
+enemy.fracoMedio = {
+    color : [255,0,0],
+    name : 'fraco',
+    cash : 1,
+    health: 60,
+    speed: 2,
+}
+
+enemy.saudavelMedio = {
+    color: [0,0,255],
+    name : 'saudavel',
+    cash: 1,
+    health :100,
+    speed:1.7
+}
+
+enemy.forteMedio = {
+    color : [0,255,0],
+    name : 'forte',
+    cash : 2,
+    health : 250,
+    speed: 1.8
+}
+
+enemy.mediumMedio = {
+    // Display
+    color: [189, 195, 0],
+    // Misc
+    name: 'medium',
+    // Stats
+    cash: 1,
+    speed: 2,
+    health: 80
+};
+
+enemy.garenMedio = {
+    color : [255,255,80],
+    name : 'garen',
+    cash : 5,
+    health : 700,
+    speed : 1
+}
+
+enemy.fracoDificil = {
+    color : [255,0,0],
+    name : 'fraco',
+    cash : 1,
+    health: 90,
+    speed: 2,
+}
+
+enemy.saudavelDificil = {
+    color: [0,0,255],
+    name : 'saudavel',
+    cash: 1,
+    health : 120,
+    speed:1.7
+}
+
+enemy.forteDificil = {
+    color : [0,255,0],
+    name : 'forte',
+    cash : 2,
+    health : 300,
+    speed: 1.8
+}
+
+enemy.mediumDificil = {
+    // Display
+    color: [189, 195, 0],
+    // Misc
+    name: 'medium',
+    // Stats
+    cash: 1,
+    speed: 2,
+    health: 100
+};
+
+enemy.garenDificil = {
+    color : [255,255,80],
+    name : 'garen',
+    cash : 5,
+    health : 1000,
+    speed : 1
+}
+
 
 enemy.weakfast = {
     // Display
@@ -68,16 +166,7 @@ enemy.weakfast = {
     speed: 2
 };
 
-enemy.medium = {
-    // Display
-    color: [189, 195, 0],
-    // Misc
-    name: 'medium',
-    // Stats
-    cash: 1,
-    speed: 2,
-    health: 60
-};
+
 
 enemy.strong = {
     // Display

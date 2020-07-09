@@ -201,72 +201,77 @@ function customWave() {
 }
 else if(dificuldadeJogo == 2){
     if(wave == 0){
-        tempWave.push(['fraco', 15]); // 10
+        tempWave.push(['fracoMedio', 15]); // 10
     }
     else if(wave == 1){
-        tempWave.push(['fraco', 25] ); // 20
+        tempWave.push(['fracoMedio', 25] ); // 20
     }
     else if(wave == 2){
-        tempWave.push(['medium', 20],['fraco',20]); //30
+        tempWave.push(['mediumMedio', 20],['fracoMedio',20]); //30
     }
     else if(wave == 3){
-        tempWave.push(['medium', 15],['saudavel', 15],['fraco',30]); //45
+        tempWave.push(['mediumMedio', 15],['saudavelMedio', 15],['fracoMedio',30]); //45
     }
     else if(wave == 4){
-        tempWave.push(['forte',7],['saudavel', 25],['fraco',35]); //50
+        tempWave.push(['forteMedio',7],['saudavelMedio', 25],['fracoMedio',35]); //50
     }
     else if(wave == 5){
-        tempWave.push(['forte', 16], ['saudavel', 25], ['forte', 15], ['fraco',28]); //60
+        tempWave.push(['forteMedio', 16], ['saudavelMedio', 25], ['forteMedio', 15], ['fracoMedio',28]); //60
     }
     else if(wave == 6){
-        tempWave.push(['forte', 20], ['saudavel', 10], ['forte', 10]); //25
+        tempWave.push(['forteMedio', 20], ['saudavelMedio', 10], ['forteMedio', 10]); //25
     }
     else if(wave == 7){
-        tempWave.push(['forte',25], ['saudavel', 32], ['fraco', 33]); //75
+        tempWave.push(['forteMedio',25], ['saudavelMedio', 32], ['fracoMedio', 33]); //75
     }
     else if(wave == 8){
-        tempWave.push(['forte', 7],['saudavel', 10],['forte', 15],['saudavel', 15],['forte', 20],['saudavel', 20]); //60
+        tempWave.push(['forteMedio', 7],
+        ['saudavelMedio', 10],
+        ['forteMedio', 15],
+        ['saudavelMedio', 15],
+        ['forteMedio', 20],['saudavelMedio', 20]); //60
     }
     else if(wave == 9){
-        tempWave.push(['garen', 5],['forte', 35]); //31
+        tempWave.push(['garenMedio', 5],['forteMedio', 35]); //31
     }
     else if(wave == 10){
-        tempWave.push(['garen', 8],['forte', 42]); //31
+        tempWave.push(['garenMedio', 8],['forteMedio', 42]); //31
     }
 }
 else if(dificuldadeJogo == 3){
     if(wave == 0){
-        tempWave.push(['fraco', 20]); // 10
+        tempWave.push(['fracoDificil', 20]); // 10
     }
     else if(wave == 1){
-        tempWave.push(['fraco', 35] ); // 20
+        tempWave.push(['fracoDificil', 35] ); // 20
     }
     else if(wave == 2){
-        tempWave.push(['medium', 30],['fraco',30]); //30
+        tempWave.push(['mediumDificil', 30],['fracoDificil',30]); //30
     }
     else if(wave == 3){
-        tempWave.push(['medium', 25],['saudavel', 25],['fraco',40]); //45
+        tempWave.push(['mediumDificil', 25],['saudavelDificil', 25],['fracoDificil',40]); //45
     }
     else if(wave == 4){
-        tempWave.push(['forte',15],['saudavel', 35],['fraco',45]); //50
+        tempWave.push(['forteDificil',15],['saudavelDificil', 35],['fracoDificil',45]); //50
     }
     else if(wave == 5){
-        tempWave.push(['forte', 20], ['saudavel', 30], ['forte', 20], ['fraco',30]); //60
+        tempWave.push(['forteDificil', 20], ['saudavelDificil', 30], ['forteDificil', 20], ['fracoDificil',30]); //60
     }
     else if(wave == 6){
-        tempWave.push(['forte', 30], ['saudavel', 20], ['forte', 20]); //25
+        tempWave.push(['forteDificil', 30], ['saudavelDificil', 20], ['forteDificil', 20]); //25
     }
     else if(wave == 7){
-        tempWave.push(['forte',35], ['saudavel', 39], ['fraco', 39]); //75
+        tempWave.push(['forteDificil',35], ['saudavelDificil', 39], ['fracoDificil', 39]); //75
     }
     else if(wave == 8){
-        tempWave.push(['forte', 12],['saudavel', 15],['forte', 25],['saudavel', 25],['forte', 30],['saudavel', 29]); //60
+        tempWave.push(['forteDificil', 12],['saudavelDificil', 15],['forteDificil', 25],['saudavelDificil', 25],
+        ['forteDificil', 30],['saudavelDificil', 29]); //60
     }
     else if(wave == 9){
-        tempWave.push(['garen', 10],['forte', 50]); //31
+        tempWave.push(['garenDificil', 10],['forteDificil', 50]); //31
     }
     else if(wave == 10){
-        tempWave.push(['garen', 15],['forte', 55]); //31
+        tempWave.push(['garenDificil', 15],['forteDificil', 55]); //31
     }
 }
 
@@ -403,7 +408,7 @@ function isWave(min, max) {
 function loadMap() {
     var name = document.getElementById('map').value;
 
-    health = 15;
+    health = 25;
     cash = 65;
     
     if (name === 'custom' && custom) {
@@ -790,7 +795,7 @@ function resetGame() {
     newProjectiles = [];
     newTowers = [];
     // Reset all stats
-    health = 15;
+    health = 25;
     maxHealth = health;
     wave = 0;
     // Reset all flags
@@ -800,6 +805,7 @@ function resetGame() {
     toPathfind = false;
     toPlace = false;
     pararDeComprar = false;
+    posterior = [];
     // Start game
     nextWave();
 }
