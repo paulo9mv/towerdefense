@@ -535,8 +535,7 @@ function loadSounds() {
 // Increment wave counter and prepare wave
 function nextWave() {    
     addWave(randomWaves ? randomWave() : customWave());
-    wave++; 
-    executando = false;   
+    wave++;
 }
 
 // Check if no more enemies
@@ -842,24 +841,7 @@ function setPlace(t) {
     toPlace = true;
     updateInfo(createTower(0, 0, tower[towerType]));
 }
-var dificuldadeJogo = 0;
-function setDificuldade(dificuldade){
-    if(dificuldade == 'facil'){
-        dificuldadeJogo = 1;
-    }
-    else if(dificuldade == 'medio'){
-        dificuldadeJogo = 2;
-    }
-    else{
-        dificuldadeJogo = 3;
-    }
-    
-document.getElementById("nivel").textContent = dificuldade;
-    document.getElementById("facil").disabled = "disabled";
-    document.getElementById("medio").disabled = "disabled";
-    document.getElementById("dificil").disabled = "disabled";
 
-}
 
 // Visualize range of tower
 function showRange(t, cx, cy) {
@@ -1165,6 +1147,7 @@ function draw() {
     if (toWait && wcd === 0 || skipToNext && newEnemies.length === 0) {
         toWait = false;
         wcd = 0;
+        preparaWave();
         nextWave();
     }
 
