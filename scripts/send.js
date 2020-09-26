@@ -8,8 +8,8 @@ var pararDeComprar = false;
 
 var individuo = 0;
 var geracao = 0;
-const individuosPorGeracao = 42;
-const quantidadeMelhoresIndivuduos = 7;
+const individuosPorGeracao = 6;
+const quantidadeMelhoresIndividuos = 3;
 
 var firstExecution = true;
 var posterior = [];
@@ -63,6 +63,7 @@ function preparaWave(){
 }
 
 function posicionarEmAberto(){
+  console.log('posicionarEmAberto()');
   let gun = randomGun();
 
   while (gun != -1) {
@@ -94,6 +95,7 @@ function posicionarEmAberto(){
 }
 
 function posicionarEmFechado(item){
+  console.log('posicionarEmFechado()')
   let podePosicionar = false;
   let { x, y } = item;
   let gun = item.torre;
@@ -124,14 +126,37 @@ function posicionarEmFechado(item){
       }
     } else {
       // Aqui alterar para mudar x,y pouquinho
-      x = getRandomIntInclusive(0, 24);
-      y = getRandomIntInclusive(0, 23);
+      console.log('xy original', x,y)
+      [x, y] = variarPorQuantidade([x,y])
+      console.log('xy modificado', x,y)
     }
   } while (!podePosicionar);
 }
 
+function variarPorQuantidade(xy) {
+  let direction = getRandomIntInclusive(0,8)
+  const directions = [
+    [0,1],
+    [0,-1],
+    [1,0],
+    [-1,0],
+    [1,1],
+    [-1,-1],
+    [-1, 1],
+    [1, -1]
+  ]
+
+  let finalDirection = [xy[0] + directions[direction],xy[1] + directions[direction]]
+  while(finalDirection[0] < 0 || finalDirection[0] > 24 || finalDirection[1] < 0 || finalDirection[1] > 23){
+    direction = getRandomIntInclusive(0,8)
+    finalDirection = [xy[0] + directions[direction],xy[1] + directions[direction]]
+  }
+
+  return finalDirection
+}
+
 function iniciarJogo(){
-    console.log("iniciarJogo -> iniciarJogo")
+    console.log('iniciarJogo()')
     if (paused) pause()
 }
 
@@ -208,7 +233,7 @@ function salvarDados() {
 
 function geraNovaGeracao() {
     console.log('Selecionando os melhores');
-    let melhoresIndividuos = sortObj(novosIndividuos, 'ultimaWaveAtingida').slice(0, quantidadeMelhoresIndivuduos);
+    let melhoresIndividuos = sortObj(novosIndividuos, 'ultimaWaveAtingida').slice(0, quantidadeMelhoresIndividuos);
 
     console.log("A quantidade de indíviduos deve ser 6 == ", novosIndividuos.length);
     todosIndividuosDeTodasGeracoes.push(novosIndividuos);
