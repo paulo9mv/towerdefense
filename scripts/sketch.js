@@ -533,7 +533,7 @@ function loadSounds() {
 }
 
 // Increment wave counter and prepare wave
-function nextWave() {    
+function nextWave() {
     addWave(randomWaves ? randomWave() : customWave());
     wave++;
 }
@@ -1133,18 +1133,21 @@ function draw() {
 
     // If player is dead, reset game
     if (health <= 0){
-    
-
+        console.log('Health zero')
         salvarDados();
         resetGame();
+        preparaWave();
     }
     if (wave == 11){
+        console.log('Fim de jogo')
         alert('Fim de jogo!');
         resetGame();
+        preparaWave();
     }
 
     // Start next wave
     if (toWait && wcd === 0 || skipToNext && newEnemies.length === 0) {
+        console.log('toWait')
         toWait = false;
         wcd = 0;
         preparaWave();

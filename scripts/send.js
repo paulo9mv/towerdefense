@@ -59,7 +59,6 @@ function preparaWave(){
       posicionarEmAberto();
     }
   }
-  console.log('Tudo atualizado')
   if (paused) pause()
 }
 
@@ -177,21 +176,12 @@ function sortObj(list, key, dec = false) {
     return list.sort(compare);
 }
 function salvarDados() {
-    let intervalo;
-
-
-    tempoB = performance.now();
-
-    intervalo = (tempoB - tempoA) / 1000;
-
-    tempoA = performance.now();
 
     var packet = {
         individuo,
         geracao,
         torresPosicionadas: adicionadas,
-        ultimaWaveAtingida: wave,
-        tempoSegundos: intervalo
+        ultimaWaveAtingida: wave
     }
 
     console.log("Indivíduo", individuo, "finalizado. Seus dados são:");
