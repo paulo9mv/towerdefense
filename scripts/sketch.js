@@ -534,6 +534,7 @@ function loadSounds() {
 
 // Increment wave counter and prepare wave
 function nextWave() {
+    console.log('nextWave()', paused)
     addWave(randomWaves ? randomWave() : customWave());
     wave++;
 }
@@ -784,6 +785,7 @@ function recalculate() {
 
 // TODO vary health based on map
 function resetGame() {
+    console.log('resetGame()')
     loadMap();
     // Clear all entities
     enemies = [];
@@ -916,6 +918,7 @@ function preload() {
 
 
 function setup() {
+    console.log('setup()')
     var div = document.getElementById('sketch-holder');
     var canvas = createCanvas(div.offsetWidth, div.offsetHeight);
     canvas.parent('sketch-holder');
@@ -1142,16 +1145,20 @@ function draw() {
         console.log('Fim de jogo')
         alert('Fim de jogo!');
         resetGame();
-        preparaWave();
     }
-
     // Start next wave
     if (toWait && wcd === 0 || skipToNext && newEnemies.length === 0) {
         console.log('toWait')
         toWait = false;
         wcd = 0;
-        preparaWave();
-        nextWave();
+        if(individuo == 0 && geracao == 0){
+            preparaWave();
+            nextWave();
+        }
+        else{
+            nextWave();
+            preparaWave();
+        }
     }
 
     // Wait for next wave
