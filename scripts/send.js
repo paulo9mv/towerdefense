@@ -8,8 +8,8 @@ var pararDeComprar = false;
 
 var individuo = 0;
 var geracao = 0;
-const individuosPorGeracao = 6;
-const quantidadeMelhoresIndividuos = 3;
+const individuosPorGeracao = 42;
+const quantidadeMelhoresIndividuos = 7;
 
 var firstExecution = true;
 var posterior = [];
@@ -40,8 +40,6 @@ function setDificuldade(dificuldade){
 
 //Executada antes do início da próxima wave
 function preparaWave(){
-  console.log("preparaWave -> wave", wave)
-
   if(geracao == 0){
     posicionarEmAberto();
   } else {
@@ -63,7 +61,6 @@ function preparaWave(){
 }
 
 function posicionarEmAberto(){
-  console.log('posicionarEmAberto()');
   let gun = randomGun();
 
   while (gun != -1) {
@@ -95,8 +92,8 @@ function posicionarEmAberto(){
 }
 
 function posicionarEmFechado(item){
-  console.log('posicionarEmFechado()')
   let podePosicionar = false;
+  let modificado;
   let { x, y } = item;
   let gun = item.torre;
   setPlace(gun);
@@ -127,14 +124,16 @@ function posicionarEmFechado(item){
     } else {
       // Aqui alterar para mudar x,y pouquinho
       console.log('xy original', x,y)
-      [x, y] = variarPorQuantidade([x,y])
+      modificado = variarPorQuantidade([x,y])
+      x = modificado[0]
+      y = modificado[1]
       console.log('xy modificado', x,y)
     }
   } while (!podePosicionar);
 }
 
 function variarPorQuantidade(xy) {
-  let direction = getRandomIntInclusive(0,8)
+  let direction = getRandomIntInclusive(0,7)
   const directions = [
     [0,1],
     [0,-1],
@@ -145,13 +144,15 @@ function variarPorQuantidade(xy) {
     [-1, 1],
     [1, -1]
   ]
+  console.log(direction)
+  console.log(directions)
+  let finalDirection = [xy[0] + directions[direction][0],xy[1] + directions[direction][1]]
 
-  let finalDirection = [xy[0] + directions[direction],xy[1] + directions[direction]]
   while(finalDirection[0] < 0 || finalDirection[0] > 24 || finalDirection[1] < 0 || finalDirection[1] > 23){
-    direction = getRandomIntInclusive(0,8)
-    finalDirection = [xy[0] + directions[direction],xy[1] + directions[direction]]
+    direction = getRandomIntInclusive(0,7)
+    finalDirection = [xy[0] + directions[direction][0],xy[1] + directions[direction][1]]
+    console.log(direction)
   }
-
   return finalDirection
 }
 
@@ -233,7 +234,28 @@ function salvarDados() {
 
 function geraNovaGeracao() {
     console.log('Selecionando os melhores');
-    let melhoresIndividuos = sortObj(novosIndividuos, 'ultimaWaveAtingida').slice(0, quantidadeMelhoresIndividuos);
+
+    const individuosOrdenadosPorWaveMaxima = sortObj(novosIndividuos, 'ultimaWaveAtingida')
+    const melhoresIndividuos = []
+    const EULER = 2.718281828459045235360287
+    let chance;
+    let remover = []
+
+    console.log('individuosOrdenadosPorWaveMaxima', individuosOrdenadosPorWaveMaxima)
+
+    while(melhoresIndividuos.length < quantidadeMelhoresIndividuos){
+      for(i = 0; i < individuosOrdenadosPorWaveMaxima.length && melhoresIndividuos.length < quantidadeMelhoresIndividuos; i++){
+        chance = 1/(Math.pow(EULER, (0.12 * i)))
+
+        if(chance >= Math.random() && !remover.includes(i)){
+          melhoresIndividuos.push(individuosOrdenadosPorWaveMaxima[i])
+          console.log('i',individuosOrdenadosPorWaveMaxima[i])
+          console.log('m',melhoresIndividuos)
+          remover.push(i)
+        }
+      }
+    }
+    console.log('Os selecionados foram', melhoresIndividuos)
 
     console.log("A quantidade de indíviduos deve ser 6 == ", novosIndividuos.length);
     todosIndividuosDeTodasGeracoes.push(novosIndividuos);
@@ -267,7 +289,6 @@ function geraNovaGeracao() {
     }
 
     console.log(genesCriados);
-
 }
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);

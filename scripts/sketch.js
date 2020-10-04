@@ -156,11 +156,11 @@ function customWave() {
     let waves = [];
     let tempWave = [];
 
-    if(30 - (wave * 3) <= 10){
+    if(20 - (wave * 2) <= 10){
         tempWave.push(10)
     }
     else{
-        tempWave.push(30 - (wave * 3))
+        tempWave.push(20 - (wave * 2))
     }
             
     if(dificuldadeJogo == 1){
@@ -534,7 +534,6 @@ function loadSounds() {
 
 // Increment wave counter and prepare wave
 function nextWave() {
-    console.log('nextWave()', paused)
     addWave(randomWaves ? randomWave() : customWave());
     wave++;
 }
@@ -1136,7 +1135,6 @@ function draw() {
 
     // If player is dead, reset game
     if (health <= 0){
-        console.log('Health zero')
         salvarDados();
         resetGame();
         preparaWave();
@@ -1148,7 +1146,6 @@ function draw() {
     }
     // Start next wave
     if (toWait && wcd === 0 || skipToNext && newEnemies.length === 0) {
-        console.log('toWait')
         toWait = false;
         wcd = 0;
         if(individuo == 0 && geracao == 0){
