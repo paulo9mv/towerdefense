@@ -115,7 +115,7 @@ enemy.fracoDificil = {
     color : [255,0,0],
     name : 'fraco',
     cash : 1,
-    health: 160,
+    health: 120,
     speed: 2,
 }
 
@@ -123,7 +123,7 @@ enemy.saudavelDificil = {
     color: [0,0,255],
     name : 'saudavel',
     cash: 1,
-    health : 360,
+    health : 300,
     speed:1.7
 }
 
@@ -131,7 +131,7 @@ enemy.forteDificil = {
     color : [0,255,0],
     name : 'forte',
     cash : 2,
-    health : 800,
+    health : 550,
     speed: 1.8
 }
 
@@ -143,14 +143,14 @@ enemy.mediumDificil = {
     // Stats
     cash: 1,
     speed: 2,
-    health: 360
+    health: 300
 }
 
 enemy.garenDificil = {
     color : [255,255,80],
     name : 'garen',
     cash : 5,
-    health : 2400,
+    health : 1800,
     speed : 1
 }
 
