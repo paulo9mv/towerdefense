@@ -156,11 +156,11 @@ function customWave() {
     let waves = [];
     let tempWave = [];
 
-    if(20 - (wave * 2) <= 10){
+    if(30 - (wave * 3) <= 10){
         tempWave.push(10)
     }
     else{
-        tempWave.push(20 - (wave * 2))
+        tempWave.push(30 - (wave * 3))
     }
             
     if(dificuldadeJogo == 1){
