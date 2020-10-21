@@ -19,7 +19,7 @@ tower.gun = {
     name: 'gun',
     title: 'Gun Tower',
     // Stats
-    cooldownMax: 9,
+    cooldownMax: 8,
     cooldownMin: 4,
     damageMin: 2,
     cost: 20,
@@ -55,8 +55,8 @@ tower.laser = {
     // Stats
     cooldownMax: 1,
     cost: 65,
-    damageMax: 4,
-    damageMin: 2,
+    damageMax: 6,
+    damageMin: 3,
     range: 2,
     type: 'energy',
     // Upgrades
@@ -184,8 +184,8 @@ tower.sniper = {
     sound: 'sniper',
     title: 'Sniper Tower',
     // Stats
-    cooldownMax: 100,
-    cooldownMin: 60,
+    cooldownMax: 80,
+    cooldownMin: 50,
     cost: 130,
     damageMax: 100,
     damageMin: 100,
