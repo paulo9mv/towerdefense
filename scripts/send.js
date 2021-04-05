@@ -178,7 +178,6 @@ function randomGun() {
 
     let a = getRandomIntInclusive(0, gunsRandom.length);
     return a == gunsRandom.length ? -1 : gunsRandom[a];
-
 }
 
 function sortObj(list, key, dec = false) {
@@ -209,7 +208,7 @@ function salvarDados() {
     individuo++;
     novosIndividuos.push(packet);
 
-    document.getElementById("myTextarea").value = JSON.stringify(novosIndividuos);
+    document.getElementById("myTextarea").value = JSON.stringify(novosIndividuos) + '&' + JSON.stringify(todosIndividuosDeTodasGeracoes);
 
     if (individuo == individuosPorGeracao) {
         individuo = 0;
@@ -257,6 +256,7 @@ function geraNovaGeracao() {
 
     console.log('todosIndividuosDeTodasGeracoes');
     console.log(todosIndividuosDeTodasGeracoes);
+    console.log(JSON.stringify(todosIndividuosDeTodasGeracoes));
 
     novosIndividuos = [];
     genesCriados = [];

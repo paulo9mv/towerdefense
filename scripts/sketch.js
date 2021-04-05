@@ -120,7 +120,7 @@ function calcFPS() {
     var fps = frameRate();
     avgFPS += (fps - avgFPS) / ++numFPS;
 
-    // Draw black rect under text
+    // Draw black rect u  nder text
     noStroke();
     fill(0);
     rect(0, height - 40, 70, 40);
@@ -156,8 +156,8 @@ function customWave() {
     let waves = [];
     let tempWave = [];
 
-    if(30 - (wave * 3) <= 10){
-        tempWave.push(10)
+    if(30 - (wave * 3) <= 15){
+        tempWave.push(15)
     }
     else{
         tempWave.push(30 - (wave * 3))
@@ -1064,6 +1064,7 @@ function draw() {
     }
     if (wave == 11){
         console.log('Fim de jogo')
+        salvarDados();
         alert('Fim de jogo!');
         resetGame();
     }

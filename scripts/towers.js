@@ -40,7 +40,7 @@ tower.laser = {
     title: 'Laser Tower',
     // Stats
     cooldownMax: 1,
-    cost: 50,
+    cost: 40,
     damageMax: 4,
     damageMin: 4,
     range: 2,
@@ -64,7 +64,7 @@ tower.sniper = {
     // Stats
     cooldownMax: 80,
     cooldownMin: 50,
-    cost: 75,
+    cost: 60,
     damageMax: 100,
     damageMin: 100,
     range: 9,
