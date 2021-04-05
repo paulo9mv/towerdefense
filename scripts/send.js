@@ -2,8 +2,8 @@ var adicionadas = [];
 
 var individuo = 0;
 var geracao = 0;
-const individuosPorGeracao = 6;
-const quantidadeMelhoresIndividuos = 3;
+const individuosPorGeracao = 42;
+const quantidadeMelhoresIndividuos = 7;
 
 var firstExecution = true;
 var posterior = [];

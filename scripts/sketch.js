@@ -162,8 +162,8 @@ function customWave() {
     else{
         tempWave.push(30 - (wave * 3))
     }
-            
-if(dificuldadeJogo == 3){
+           
+if(dificuldadeJogo == 1){
     if(wave == 0){
         tempWave.push(['fraco', 5]); // 5
     }
@@ -196,6 +196,74 @@ if(dificuldadeJogo == 3){
     }
     else if(wave == 10){
         tempWave.push(['fraco', 14], ['normal', 12], ['forte', 9]); //37
+    }
+} else if(dificuldadeJogo == 2){
+    if(wave == 0){
+        tempWave.push(['fracoM', 5]); // 5
+    }
+    else if(wave == 1){
+        tempWave.push(['fracoM', 5] ); // 6
+    }
+    else if(wave == 2){
+        tempWave.push(['fracoM', 6]); //12
+    }
+    else if(wave == 3){
+        tempWave.push(['fracoM', 7], ['normalM', 5]); //14
+    }
+    else if(wave == 4){
+        tempWave.push(['fracoM', 8], ['normalM', 6]); //16
+    }
+    else if(wave == 5){
+        tempWave.push(['fracoM', 9], ['normalM', 7]); //18
+    }
+    else if(wave == 6){
+        tempWave.push(['fracoM', 10], ['normalM', 8], ['forteM', 5]); //25
+    }
+    else if(wave == 7){
+        tempWave.push(['fracoM', 11], ['normalM', 9], ['forteM', 6]); //28
+    }
+    else if(wave == 8){
+        tempWave.push(['fracoM', 12], ['normalM', 10], ['forteM', 7]); //31
+    }
+    else if(wave == 9){
+        tempWave.push(['fracoM', 13], ['normalM', 11], ['forteM', 8]); //34
+    }
+    else if(wave == 10){
+        tempWave.push(['fracoM', 14], ['normalM', 12], ['forteM', 9]); //37
+    }
+} else if(dificuldadeJogo == 3){
+    if(wave == 0){
+        tempWave.push(['fracoH', 5]); // 5
+    }
+    else if(wave == 1){
+        tempWave.push(['fracoH', 5] ); // 6
+    }
+    else if(wave == 2){
+        tempWave.push(['fracoH', 6]); //12
+    }
+    else if(wave == 3){
+        tempWave.push(['fracoH', 7], ['normalH', 5]); //14
+    }
+    else if(wave == 4){
+        tempWave.push(['fracoH', 8], ['normalH', 6]); //16
+    }
+    else if(wave == 5){
+        tempWave.push(['fracoH', 9], ['normalH', 7]); //18
+    }
+    else if(wave == 6){
+        tempWave.push(['fracoH', 10], ['normalH', 8], ['forteH', 5]); //25
+    }
+    else if(wave == 7){
+        tempWave.push(['fracoH', 11], ['normalH', 9], ['forteH', 6]); //28
+    }
+    else if(wave == 8){
+        tempWave.push(['fracoH', 12], ['normalH', 10], ['forteH', 7]); //31
+    }
+    else if(wave == 9){
+        tempWave.push(['fracoH', 13], ['normalH', 11], ['forteH', 8]); //34
+    }
+    else if(wave == 10){
+        tempWave.push(['fracoH', 14], ['normalH', 12], ['forteH', 9]); //37
     }
 }
 
@@ -1077,6 +1145,7 @@ function draw() {
             nextWave();
         }
         else{
+            cash += 5
             nextWave();
             preparaWave();
         }

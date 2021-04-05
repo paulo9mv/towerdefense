@@ -36,3 +36,51 @@ enemy.forte = {
     health: 240,
     speed: 2,
 }
+
+enemy.fracoM = {
+    color : [255,0,0],
+    name : 'fraco',
+    cash : 1,
+    health: 88,
+    speed: 2,
+}
+
+enemy.normalM = {
+    color : [0,255,0],
+    name : 'normal',
+    cash : 1,
+    health: 187,
+    speed: 2,
+}
+
+enemy.forteM = {
+    color : [0,0,255],
+    name : 'forte',
+    cash : 2,
+    health: 264,
+    speed: 2,
+}
+
+enemy.fracoH = {
+    color : [255,0,0],
+    name : 'fraco',
+    cash : 1,
+    health: 96,
+    speed: 2,
+}
+
+enemy.normalH = {
+    color : [0,255,0],
+    name : 'normal',
+    cash : 1,
+    health: 204,
+    speed: 2,
+}
+
+enemy.forteH = {
+    color : [0,0,255],
+    name : 'forte',
+    cash : 2,
+    health: 288,
+    speed: 2,
+}

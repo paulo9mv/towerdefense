@@ -42,7 +42,7 @@ tower.laser = {
     cooldownMax: 1,
     cost: 40,
     damageMax: 4,
-    damageMin: 4,
+    damageMin: 3,
     range: 2,
     type: 'energy',
     // Upgrades
