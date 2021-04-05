@@ -163,115 +163,39 @@ function customWave() {
         tempWave.push(30 - (wave * 3))
     }
             
-    if(dificuldadeJogo == 1){
-
+if(dificuldadeJogo == 3){
     if(wave == 0){
-        tempWave.push(['fraco', 10]); // 10
+        tempWave.push(['fraco', 5]); // 5
     }
     else if(wave == 1){
-        tempWave.push(['fraco', 20] ); // 20
+        tempWave.push(['fraco', 6] ); // 6
     }
     else if(wave == 2){
-        tempWave.push(['medium', 15],['fraco',15]); //30
+        tempWave.push(['fraco', 7], ['normal', 5]); //12
     }
     else if(wave == 3){
-        tempWave.push(['medium', 10],['saudavel', 10],['fraco',25]); //45
+        tempWave.push(['fraco', 8], ['normal', 6]); //14
     }
     else if(wave == 4){
-        tempWave.push(['forte', 4],['saudavel', 18],['fraco',28]); //50
+        tempWave.push(['fraco', 9], ['normal', 7]); //16
     }
     else if(wave == 5){
-        tempWave.push(['forte', 10], ['saudavel', 20], ['forte', 10], ['fraco',20]); //60
+        tempWave.push(['fraco', 10], ['normal', 8]); //18
     }
     else if(wave == 6){
-        tempWave.push(['forte', 15], ['saudavel', 5], ['forte', 5]); //25
+        tempWave.push(['fraco', 11], ['normal', 9], ['forte', 5]); //25
     }
     else if(wave == 7){
-        tempWave.push(['forte', 20], ['saudavel', 25], ['fraco', 30]); //75
+        tempWave.push(['fraco', 12], ['normal', 10], ['forte', 6]); //28
     }
     else if(wave == 8){
-        tempWave.push(['forte', 5],['saudavel', 5],['forte', 10],['saudavel', 10],['forte', 15],['saudavel', 15]); //60
+        tempWave.push(['fraco', 13], ['normal', 11], ['forte', 7]); //31
     }
     else if(wave == 9){
-        tempWave.push(['garen', 2],['forte', 25]); //31
+        tempWave.push(['fraco', 14], ['normal', 12], ['forte', 8]); //34
     }
     else if(wave == 10){
-        tempWave.push(['garen', 3],['forte', 30]); //31
-    }
-}
-else if(dificuldadeJogo == 2){
-    if(wave == 0){
-        tempWave.push(['fracoMedio', 15]); // 10
-    }
-    else if(wave == 1){
-        tempWave.push(['fracoMedio', 25] ); // 20
-    }
-    else if(wave == 2){
-        tempWave.push(['mediumMedio', 20],['fracoMedio',20]); //30
-    }
-    else if(wave == 3){
-        tempWave.push(['mediumMedio', 15],['saudavelMedio', 15],['fracoMedio',30]); //45
-    }
-    else if(wave == 4){
-        tempWave.push(['forteMedio',7],['saudavelMedio', 25],['fracoMedio',35]); //50
-    }
-    else if(wave == 5){
-        tempWave.push(['forteMedio', 16], ['saudavelMedio', 25], ['forteMedio', 15], ['fracoMedio',28]); //60
-    }
-    else if(wave == 6){
-        tempWave.push(['forteMedio', 20], ['saudavelMedio', 10], ['forteMedio', 10]); //25
-    }
-    else if(wave == 7){
-        tempWave.push(['forteMedio',25], ['saudavelMedio', 32], ['fracoMedio', 33]); //75
-    }
-    else if(wave == 8){
-        tempWave.push(['forteMedio', 7],
-        ['saudavelMedio', 10],
-        ['forteMedio', 15],
-        ['saudavelMedio', 15],
-        ['forteMedio', 20],['saudavelMedio', 20]); //60
-    }
-    else if(wave == 9){
-        tempWave.push(['garenMedio', 5],['forteMedio', 35]); //31
-    }
-    else if(wave == 10){
-        tempWave.push(['garenMedio', 8],['forteMedio', 42]); //31
-    }
-}
-else if(dificuldadeJogo == 3){
-    if(wave == 0){
-        tempWave.push(['fracoDificil', 20]); // 10
-    }
-    else if(wave == 1){
-        tempWave.push(['fracoDificil', 35] ); // 20
-    }
-    else if(wave == 2){
-        tempWave.push(['mediumDificil', 30],['fracoDificil',30]); //30
-    }
-    else if(wave == 3){
-        tempWave.push(['mediumDificil', 25],['saudavelDificil', 25],['fracoDificil',40]); //45
-    }
-    else if(wave == 4){
-        tempWave.push(['forteDificil',15],['saudavelDificil', 35],['fracoDificil',45]); //50
-    }
-    else if(wave == 5){
-        tempWave.push(['forteDificil', 20], ['saudavelDificil', 30], ['forteDificil', 20], ['fracoDificil',30]); //60
-    }
-    else if(wave == 6){
-        tempWave.push(['forteDificil', 30], ['saudavelDificil', 20], ['forteDificil', 20]); //25
-    }
-    else if(wave == 7){
-        tempWave.push(['forteDificil',35], ['saudavelDificil', 39], ['fracoDificil', 39]); //75
-    }
-    else if(wave == 8){
-        tempWave.push(['forteDificil', 12],['saudavelDificil', 15],['forteDificil', 25],['saudavelDificil', 25],
-        ['forteDificil', 30],['saudavelDificil', 29]); //60
-    }
-    else if(wave == 9){
-        tempWave.push(['garenDificil', 10],['forteDificil', 50]); //31
-    }
-    else if(wave == 10){
-        tempWave.push(['garenDificil', 15],['forteDificil', 55]); //31
+        tempWave.push(['fraco', 15], ['normal', 13], ['forte', 9]); //37
     }
 }
 
