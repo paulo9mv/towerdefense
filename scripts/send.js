@@ -1,10 +1,4 @@
-
-
-var lock = false;
-var debugao = true;
-var tempoA, tempoB;
 var adicionadas = [];
-var pararDeComprar = false;
 
 var individuo = 0;
 var geracao = 0;

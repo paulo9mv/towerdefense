@@ -728,7 +728,6 @@ function resetGame() {
     toCooldown = false;
     toPathfind = false;
     toPlace = false;
-    pararDeComprar = false;
     posterior = [];
     // Start game
     nextWave();
@@ -1086,7 +1085,6 @@ function draw() {
     if (noMoreEnemies() && !toWait) {
         wcd = waveCool;
         toWait = true;
-        pararDeComprar = false;
     }
 
     // Reset spawn cooldown
