@@ -8,14 +8,16 @@ var pararDeComprar = false;
 
 var individuo = 0;
 var geracao = 0;
-const individuosPorGeracao = 42;
-const quantidadeMelhoresIndividuos = 7;
+const individuosPorGeracao = 6;
+const quantidadeMelhoresIndividuos = 3;
 
 var firstExecution = true;
 var posterior = [];
 var todosIndividuosDeTodasGeracoes = [];
 var genesCriados = [];
 
+const limiteX = 20
+const limiteY = 23
 
 
 var dificuldadeJogo = 0;
@@ -66,8 +68,8 @@ function posicionarEmAberto(){
   while (gun != -1) {
     //Seleciona a arma
     setPlace(gun);
-    x = getRandomIntInclusive(0, 24);
-    y = getRandomIntInclusive(0, 23);
+    x = getRandomIntInclusive(0, limiteX);
+    y = getRandomIntInclusive(0, limiteY);
     do {
       //Sorteia um local para posicionar
       podePosicionar = canPlace(x, y);
@@ -82,8 +84,8 @@ function posicionarEmAberto(){
         });
         console.log("Posicionando", nome, "em", x, y);
       } else {
-        x = getRandomIntInclusive(0, 24);
-        y = getRandomIntInclusive(0, 23);
+        x = getRandomIntInclusive(0, limiteX);
+        y = getRandomIntInclusive(0, limiteY);
       }
     } while (!podePosicionar)
 
@@ -99,8 +101,8 @@ function posicionarEmFechado(item){
   setPlace(gun);
   if (item.mutacao) {
     console.log("Realizando uma mutação.");
-    x = getRandomIntInclusive(0, 24);
-    y = getRandomIntInclusive(0, 23);
+    x = getRandomIntInclusive(0, limiteX);
+    y = getRandomIntInclusive(0, limiteY);
   }
   do {
     //Sorteia um local para posicionar
@@ -148,7 +150,7 @@ function variarPorQuantidade(xy) {
   console.log(directions)
   let finalDirection = [xy[0] + directions[direction][0],xy[1] + directions[direction][1]]
 
-  while(finalDirection[0] < 0 || finalDirection[0] > 24 || finalDirection[1] < 0 || finalDirection[1] > 23){
+  while(finalDirection[0] < 0 || finalDirection[0] > limiteX || finalDirection[1] < 0 || finalDirection[1] > limiteY){
     direction = getRandomIntInclusive(0,7)
     finalDirection = [xy[0] + directions[direction][0],xy[1] + directions[direction][1]]
     console.log(direction)
@@ -168,9 +170,6 @@ function randomGun() {
 
     if (cash >= tower.gun.cost) {
         gunsRandom.push('gun');
-    }
-    if (cash >= tower.slow.cost) {
-        gunsRandom.push('slow');
     }
     if (cash >= tower.sniper.cost) {
         gunsRandom.push('sniper');
