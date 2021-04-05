@@ -806,7 +806,7 @@ function updatePause() {
 function updateStatus() {
     document.getElementById('individuo').innerHTML = 'Individuo ' + individuo;
     document.getElementById('geracao').innerHTML = 'Geração ' + geracao;
-    document.getElementById('wave').innerHTML = 'Wave ' + wave;
+    document.getElementById('wave').innerHTML = 'Wave ' + (wave - 1);
     document.getElementById('health').innerHTML = 'Health: ' +
     health + '/' + maxHealth;
     document.getElementById('cash').innerHTML = '$' + cash;
