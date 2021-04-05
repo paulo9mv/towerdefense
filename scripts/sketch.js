@@ -168,34 +168,34 @@ if(dificuldadeJogo == 3){
         tempWave.push(['fraco', 5]); // 5
     }
     else if(wave == 1){
-        tempWave.push(['fraco', 6] ); // 6
+        tempWave.push(['fraco', 5] ); // 6
     }
     else if(wave == 2){
-        tempWave.push(['fraco', 7], ['normal', 5]); //12
+        tempWave.push(['fraco', 6]); //12
     }
     else if(wave == 3){
-        tempWave.push(['fraco', 8], ['normal', 6]); //14
+        tempWave.push(['fraco', 7], ['normal', 5]); //14
     }
     else if(wave == 4){
-        tempWave.push(['fraco', 9], ['normal', 7]); //16
+        tempWave.push(['fraco', 8], ['normal', 6]); //16
     }
     else if(wave == 5){
-        tempWave.push(['fraco', 10], ['normal', 8]); //18
+        tempWave.push(['fraco', 9], ['normal', 7]); //18
     }
     else if(wave == 6){
-        tempWave.push(['fraco', 11], ['normal', 9], ['forte', 5]); //25
+        tempWave.push(['fraco', 10], ['normal', 8], ['forte', 5]); //25
     }
     else if(wave == 7){
-        tempWave.push(['fraco', 12], ['normal', 10], ['forte', 6]); //28
+        tempWave.push(['fraco', 11], ['normal', 9], ['forte', 6]); //28
     }
     else if(wave == 8){
-        tempWave.push(['fraco', 13], ['normal', 11], ['forte', 7]); //31
+        tempWave.push(['fraco', 12], ['normal', 10], ['forte', 7]); //31
     }
     else if(wave == 9){
-        tempWave.push(['fraco', 14], ['normal', 12], ['forte', 8]); //34
+        tempWave.push(['fraco', 13], ['normal', 11], ['forte', 8]); //34
     }
     else if(wave == 10){
-        tempWave.push(['fraco', 15], ['normal', 13], ['forte', 9]); //37
+        tempWave.push(['fraco', 14], ['normal', 12], ['forte', 9]); //37
     }
 }
 
@@ -332,8 +332,8 @@ function isWave(min, max) {
 function loadMap() {
     var name = document.getElementById('map').value;
 
-    health = 25;
-    cash = 65;
+    health = 10;
+    cash = 50;
     
     if (name === 'custom' && custom) {
         // Grids
@@ -388,7 +388,7 @@ function loadMap() {
         var numSpawns;
         wallCover = 0.1;
         if (name[name.length - 1] === '3') {
-            cash = 65;
+            cash = 50;
             numSpawns = 3;
         } else {
             numSpawns = 2;
@@ -719,7 +719,7 @@ function resetGame() {
     newProjectiles = [];
     newTowers = [];
     // Reset all stats
-    health = 25;
+    health = 10;
     maxHealth = health;
     wave = 0;
     // Reset all flags
