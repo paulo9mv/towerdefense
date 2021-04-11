@@ -17,7 +17,7 @@ enemy.fraco = {
   color: [255, 0, 0],
   name: "fraco",
   cash: 1,
-  health: 80,
+  health: 50,
   speed: 2,
 };
 
@@ -25,7 +25,7 @@ enemy.normal = {
   color: [0, 255, 0],
   name: "normal",
   cash: 1,
-  health: 170,
+  health: 100,
   speed: 2,
 };
 
@@ -33,7 +33,7 @@ enemy.forte = {
   color: [0, 0, 255],
   name: "forte",
   cash: 2,
-  health: 240,
+  health: 150,
   speed: 2,
 };
 
@@ -41,7 +41,7 @@ enemy.fracoM = {
   color: [255, 0, 0],
   name: "fraco",
   cash: 1,
-  health: 88,
+  health: 80,
   speed: 2,
 };
 
@@ -49,7 +49,7 @@ enemy.normalM = {
   color: [0, 255, 0],
   name: "normal",
   cash: 1,
-  health: 187,
+  health: 170,
   speed: 2,
 };
 
@@ -57,7 +57,7 @@ enemy.forteM = {
   color: [0, 0, 255],
   name: "forte",
   cash: 2,
-  health: 264,
+  health: 250,
   speed: 2,
 };
 
@@ -65,7 +65,7 @@ enemy.fracoH = {
   color: [255, 0, 0],
   name: "fraco",
   cash: 1,
-  health: 96,
+  health: 120,
   speed: 2,
 };
 
@@ -73,7 +73,7 @@ enemy.normalH = {
   color: [0, 255, 0],
   name: "normal",
   cash: 1,
-  health: 204,
+  health: 230,
   speed: 2,
 };
 
@@ -81,7 +81,7 @@ enemy.forteH = {
   color: [0, 0, 255],
   name: "forte",
   cash: 2,
-  health: 288,
+  health: 360,
   speed: 2,
 };
 
