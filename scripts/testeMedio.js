@@ -68,11 +68,13 @@ const superadosPorRodada3_1 = i_a_10.map(item => {
     )
 })
 
+const escolhidos = teste3.map(item => item.filter(i => i.ultimaWaveAtingida === 11)).filter(item => item.length)[0].map(item => item.torresPosicionadas)
+//.map(item => item.torresPosicionadas)
+//.slice(0, 3).map(i => i.filter(item => item.wave !== 11))
 
+console.log(escolhidos)
 
-
-
-
+/*
 
 console.log("Teste 1")
 console.log('Media de rodada atingida: ', rodadasSuperadasGeracao0_0 / teste1[0].length)
@@ -92,4 +94,4 @@ console.log('Media de rodada atingida: ', rodadasSuperadasGeracao0_2 / teste1[0]
 console.log('Media de rodada atingida: ', rodadasSuperadasGeracao1_2 / teste1[1].length)
 
 console.log(superadosPorRodada3)
-console.log(superadosPorRodada3_1)
+console.log(superadosPorRodada3_1)*/

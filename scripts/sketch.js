@@ -396,7 +396,7 @@ function loadMap() {
   var name = document.getElementById("map").value;
 
   health = 10;
-  cash = 50;
+  cash = 10000;
 
   if (name === "custom" && custom) {
     // Grids
@@ -525,6 +525,24 @@ function loadSounds() {
 function nextWave() {
   addWave(randomWaves ? randomWave() : customWave());
   wave++;
+
+  buyPre()
+}
+
+function buyPre() {
+  const a = [
+    { wave: 1, torre: 'laser', x: 15, y: 14 },
+    { wave: 2, torre: 'gun', x: 16, y: 14 },
+    { wave: 4, torre: 'gun', x: 19, y: 14 },
+    { wave: 6, torre: 'gun', x: 7, y: 1 },
+    { wave: 8, torre: 'laser', x: 15, y: 13 },
+    { wave: 10, torre: 'sniper', x: 15, y: 15 }
+  ]
+
+  a.map(item => {
+    setPlace(item.torre)
+    buy(createTower(item.x, item.y, tower[towerType]))
+  })
 }
 
 // Check if no more enemies

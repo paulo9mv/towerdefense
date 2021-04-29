@@ -24,7 +24,7 @@ const quantidadeQuePassou1 = i_a_10.map(item => {
         } else return acc
     }, 0)
 })
-console.log('pop1', teste)
+//console.log('pop1', teste)
 
 const quantidadeQuePassou2 = i_a_10.map(item => {
     teste[item - 1] = analisaPop2.reduce((acc, cur, index, array) => {
@@ -33,7 +33,7 @@ const quantidadeQuePassou2 = i_a_10.map(item => {
         } else return acc
     }, 0)
 })
-console.log('pop2', teste)
+//console.log('pop2', teste)
 
 const quantidadeQuePassou3 = i_a_10.map(item => {
     teste[item - 1] = analisaPop3.reduce((acc, cur, index, array) => {
@@ -43,8 +43,16 @@ const quantidadeQuePassou3 = i_a_10.map(item => {
     }, 0)
 })
 
+const tresSolucoes =
+populacao1[0]
+.filter(item => item.ultimaWaveAtingida === 11)
+.map(item => item.torresPosicionadas)
+.slice(0, 3).map(i => i.filter(item => item.wave !== 11))
+
+console.log('tresSo', tresSolucoes)
+
 //console.log(analisaPop1)
-console.log('pop3', teste)
+//console.log('pop3', teste)
 
 
 //console.log(analisaPop2)
